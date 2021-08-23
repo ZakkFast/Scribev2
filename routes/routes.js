@@ -1,36 +1,71 @@
 const path = require('path')
 const fs = require('fs')
+const { v4: uuidv4 } = require('uuid')
 
 module.exports = app => {
-    fs.readFile("db/db.json","utf8", (err, data) => {
-        if(err) throw err
-        var notes = JSON.parse(data)
 
-        app.get('/api/notes', (req, res) => {
-            res.json(notes)
+    app.get('/api/notes', (req, res) => {
+        fs.readFile('db/db.json', 'utf8', (err, data) => {
+            res.json(JSON.parse(data))
         })
-        app.post('/api/notes', (req, res) => {
-            let newNote = req.body
-            notes.push(newNote)
-            writeToDb()
-            return console.log(`Sucessfully added ${newNote.title}`)
-        })
-        app.get('/api/notes/:id', (req, res) => {
-            res.josn(notes[req.params.id])
-        })
-        app.get('/notes', (req, res) => {
-            res.sendFile(path.join(__dirname, '../public/notes.html'))
-        })
-        app.get('*', (req, res) => {
-            res.sendFile(path.join(__dirname, '../public/index.html'))
-        })
-        function writeToDb() {
-            fs.writeFile('db/db.json', JSON.stringify(notes), err =>{
-                if(err) throw err
-                return true
-            })
-        }
     })
+
+    app.get('/notes', (req, res) => {
+        res.sendFile(path.join(__dirname, '../public/notes.html'))
+    })
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../public/index.html'))
+    })
+
+    app.post('/api/notes', (req, res) => {
+        var newNote = req.body
+        newNote.id = uuidv4()
+            fs.readFile('db/db.json', 'utf8', (err, data) => {
+                var data = JSON.parse(data)
+                data.push(newNote)
+                fs.writeFile('db/db.json', JSON.stringify(data), (err) =>{
+                    if(err)
+                    throw (err)
+                    console.log('Note Written')
+                })
+            })
+            res.json(newNote)
+    })
+
+
+
+
+    // fs.readFile("db/db.json","utf8", (err, data) => {
+    //     if(err) throw err
+    //     var notes = JSON.parse(data)
+
+    //     app.get('/api/notes', (req, res) => {
+    //         res.json(notes)
+    //     })
+    //     app.post('/api/notes', (req, res) => {
+    //         let newNote = req.body
+    //         newNote.id = uuidv4()
+    //         notes.push(newNote)
+    //         writeToDb()
+    //         return console.log(`Sucessfully added ${newNote.title}`)
+    //     })
+    //     app.get('/api/notes/:id', (req, res) => {
+    //         res.josn(notes[req.params.id])
+    //     })
+    //     app.get('/notes', (req, res) => {
+    //         res.sendFile(path.join(__dirname, '../public/notes.html'))
+    //     })
+    //     app.get('*', (req, res) => {
+    //         res.sendFile(path.join(__dirname, '../public/index.html'))
+    //     })
+    //     function writeToDb() {
+    //         fs.writeFile('db/db.json', JSON.stringify(notes), err =>{
+    //             if(err) throw err
+    //             return true
+    //         })
+    //     }
+    // })
 }
 /*
 1. set up notes -done
