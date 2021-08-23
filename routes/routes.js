@@ -12,8 +12,8 @@ module.exports = savedDate => {
     })
 }
 /*
-1. set up notes
-2. set up the get route for notes
+1. set up notes -done
+2. set up the get route for notes -done
 3. set up the post route for notes
  3.1. take new notes and put them into the database?
 4.set up get for notes, need to look into ids. maybe uuid?
