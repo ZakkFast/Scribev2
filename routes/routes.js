@@ -18,11 +18,6 @@ module.exports = app => {
         app.get('/api/notes/:id', (req, res) => {
             res.josn(notes[req.params.id])
         })
-        app.delete('/api/notes/:id', (req, res) => {
-            notes.splice(req.params.id, 1)
-            writeToDb()
-            console.log(`Deleted note with id of ${req.params.id}`)
-        })
         app.get('/notes', (req, res) => {
             res.sendFile(path.join(__dirname, '../public/notes.html'))
         })
