@@ -47,4 +47,7 @@ module.exports = app => {
  4.2. inject notes into html.
  4.3 possibly need function to update the JSON whenever a note is added (or deleted if I can figure it out..)
 5. looking into setting up a way to delete notes. look up express app documentation for delete method()
+
+
+****Find out why page isnt reloading. May be front end issue***
 */
