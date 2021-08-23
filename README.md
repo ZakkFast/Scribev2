@@ -15,7 +15,7 @@
 
   Scribe is a note taking web based application. Useful for taking and saving notes on the fly. Notes are written, saved, and appear on the left hand column. User's then can click on a note and view it's content. If a note is no longer needed it can also be deleted.
 
-  <img src="">
+  <img src="./public\assets\imgs\noteTaker.gif">
 
   ### Installation:
 
@@ -23,7 +23,7 @@
 
   ### Usage:
 
-  Please follow this link: 
+  Please follow this link: <a href='https://scribe.herokuapp.com/'> (>'.')> Link <('.'<) </a>
 
   ## License:
 
