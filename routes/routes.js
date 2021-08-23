@@ -2,15 +2,35 @@ const path = require('path')
 const fs = require('fs')
 
 module.exports = app => {
-    fs.readFile('../db/db.json', 'utf8', (err, data) =>{
+    fs.readFile("db/db.json","utf8", (err, data) => {
         if(err) throw err
-        let notes = JSON.parse(data)
+        var notes = JSON.parse(data)
 
-        app.get(('/api/notes', (req, res) => {
+        app.get('/api/notes', (req, res) => {
             res.json(notes)
-        }))
+        })
+        app.post('/api/notes', (req, res) => {
+            let newNote = req.body
+            notes.push(newNote)
+            writeToDb()
+            return console.log(`Sucessfully added ${newNote.title}`)
+        })
+        app.get('/api/notes/:id', (req, res) => {
+            res.josn(notes[req.params.id])
+        })
+        app.delete('/api/notes/:id', (req, res) => {
+            notes.splice(req.params.id, 1)
+            writeToDb()
+            console.log(`Deleted note with id of ${req.params.id}`)
+        })
+        app.get('/notes', (req, res) => {
+            res.sendFile(path.join(__dirname, '../public/notes.html'))
+        })
+        app.get('*', (req, res) => {
+            res.sendFile(path.join(__dirname, '../public/index.html'))
+        })
         function writeToDb() {
-            fs.writeFile('../db/db.json', JSON.stringify(notes,), err =>{
+            fs.writeFile('db/db.json', JSON.stringify(notes), err =>{
                 if(err) throw err
                 return true
             })
