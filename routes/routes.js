@@ -33,6 +33,43 @@ module.exports = app => {
             res.json(newNote)
     })
 
+    app.delete("/api/notes/:id", (req, res) => {
+        fs.readFile("db/db.json", "utf8", (error, data) => {
+          let noteid = req.params.id;
+          let note = JSON.parse(data);
+          note = note.filter((note) => {
+              if (noteid != note.id) {
+                return true;
+              } else {
+                return false;
+              };
+          }); 
+          fs.writeFile("db/db.json", JSON.stringify(note), (error) => {
+            if (error)
+            throw error;
+            res.end(console.log("Deleted Successfully"));
+          })
+        });
+  
+      });
+  
+}
+    // fs.readFile('db/db.json', 'utf8', (err, data) => {
+    //     if(err) throw err
+    //     var notes = JSON.parse(data)
+
+    //     app.get('/api/notes', (req, res) => {
+    //         res.json(notes)
+    //     })
+    //     app.delete('/api/notes/:id', (req, res) => {
+    //         notes.splice(req.params.id, 1)
+    //         fs.writeFile('db/db.json', JSON.stringify(notes), err => {
+    //             if (err) throw err
+    //             return true
+    //         })
+    // })
+    // })
+
 
     //     function writeToDb() {
     //         fs.writeFile('db/db.json', JSON.stringify(notes), err =>{
@@ -43,7 +80,6 @@ module.exports = app => {
     // })
 
 
-}
     // fs.readFile("db/db.json","utf8", (err, data) => {
     //     if(err) throw err
     //     var notes = JSON.parse(data)
