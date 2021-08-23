@@ -6,9 +6,15 @@ module.exports = app => {
         if(err) throw err
         let notes = JSON.parse(data)
 
-        app.get(('api/notes', (req, res) => {
+        app.get(('/api/notes', (req, res) => {
             res.json(notes)
         }))
+        function writeToDb() {
+            fs.writeFile('../db/db.json', JSON.stringify(notes,), err =>{
+                if(err) throw err
+                return true
+            })
+        }
     })
 }
 /*
