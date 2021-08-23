@@ -34,8 +34,16 @@ module.exports = app => {
     })
 
 
+    //     function writeToDb() {
+    //         fs.writeFile('db/db.json', JSON.stringify(notes), err =>{
+    //             if(err) throw err
+    //             return true
+    //         })
+    //     }
+    // })
 
 
+}
     // fs.readFile("db/db.json","utf8", (err, data) => {
     //     if(err) throw err
     //     var notes = JSON.parse(data)
@@ -58,15 +66,8 @@ module.exports = app => {
     //     })
     //     app.get('*', (req, res) => {
     //         res.sendFile(path.join(__dirname, '../public/index.html'))
-    //     })
-    //     function writeToDb() {
-    //         fs.writeFile('db/db.json', JSON.stringify(notes), err =>{
-    //             if(err) throw err
-    //             return true
-    //         })
-    //     }
-    // })
-}
+// })
+
 /*
 1. set up notes -done
 2. set up the get route for notes -done
