@@ -1,6 +1,16 @@
 const path = require('path')
 const fs = require('fs')
 
+module.exports = savedDate => {
+    fs.readFile('../db/db.json', 'utf8', (err, data) =>{
+        if(err) throw err
+        let notes = JSON.parse(data)
+
+        app.get(('api/notes', (req, res) => {
+            res.json(notes)
+        }))
+    })
+}
 /*
 1. set up notes
 2. set up the get route for notes
