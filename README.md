@@ -27,7 +27,7 @@
 
   Please follow this link for the live deployment of the app: (>'.')><a href='https://yunowork.herokuapp.com/'> Live Deployment </a><('.'<)
 
-  Or follow this link to go to the Git repo: (>'.')><a href='https://yunowork.herokuapp.com/'> Git Repo </a><('.'<)
+  Or follow this link to go to the Git repo: (>'.')><a href='https://github.com/ZakkFast/Scribev2'> Git Repo </a><('.'<)
 
   ## License:
 
