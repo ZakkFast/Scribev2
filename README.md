@@ -23,7 +23,7 @@
 
   ### Usage:
 
-  Please follow this link: <a href='https://scribe.herokuapp.com/'> (>'.')> Link <('.'<) </a>
+  Please follow this link: <a href='https://yunowork.herokuapp.com/'> (>'.')> Link <('.'<) </a>
 
   ## License:
 
