@@ -23,7 +23,11 @@
 
   ### Usage:
 
-  Please follow this link: <a href='https://yunowork.herokuapp.com/'> (>'.')> Link <('.'<) </a>
+  Here are the links for the code and deployed application. 
+
+  Please follow this link for the live deployment of the app: (>'.')><a href='https://yunowork.herokuapp.com/'> Live Deployment </a><('.'<)
+
+  Or follow this link to go to the Git repo: (>'.')><a href='https://yunowork.herokuapp.com/'> Git Repo </a><('.'<)
 
   ## License:
 
